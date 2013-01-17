@@ -56,8 +56,6 @@ document.getElementById("reverse").onclick=function(){
   }
   adjustedTable +="</tr></table>";  
   document.getElementById("adjustedCipher").innerHTML = adjustedTable;
-  calculated++;
-  displayCalculated();
   var newString = adjustCipher(newCipher,document.getElementById("cypherText").value);
   document.getElementById("plainText").value = newString;
 };
