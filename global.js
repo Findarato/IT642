@@ -18,6 +18,21 @@ function reset(){
 	document.getElementById("adjustedCipher").innerHTML = basicTable;
 }
 
+function getUnique(str){
+  var newString = "";
+  var len = str.length;
+  var c = str[0];
+  for ( var i = 1; i < len; ++i ) {
+      if (newString.indexOf(c)==-1) {
+      newString += c;
+    }
+    c = str[i];
+  }
+  return newString;
+}
+
+
+
 function displayAlphaTable(alphaResult){
   var table = "<table cellspacing='0' cellpadding='1px' style='border:1px black solid'><tr>";
     for (var i=0;i<26;i++){ 
@@ -48,12 +63,14 @@ plainTxt = document.getElementById("plainText");
 textBx.onblur = function() {this.value = this.value.toUpperCase();};
 subTxt.onblur = function() {
   txt = this.value;
-  txt = txt.toUpperCase();
-  txt = txt.replace(/[^\w\s]|(.)(?=\1)/gi, "")
   txt = txt.replace(/ /g,"");
+  txt = getUnique(txt);
+  txt = txt.toUpperCase();
   this.value = txt;
-
+  //substitutionCipher(txt);
 };
+
+
 plainTxt = document.getElementById("plainText");
 function changeCypher(value){
  switch(value){

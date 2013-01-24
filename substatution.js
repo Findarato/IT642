@@ -19,6 +19,12 @@ function displayCalculated(){
    document.getElementById("calculated").innerHTML = calculated;
 }
 
+function substitutionCipher(subText){
+  subText = getUnique(subtext);
+  newValue = alpha.toString();
+  newValue = subText.split();
+  alert(newValue);
+}
 
 function runCipher(adjustedAlpha,encryptedText){
   newValue="";
