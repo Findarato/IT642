@@ -7,7 +7,16 @@ var calculated = 0;
 var basic = document.getElementById("basicCipher");
 var basicTable;
 
-basicTable = displayAlphaTable(alpha)
+basicTable = displayAlphaTable(alpha);
+
+function reset(){
+	basicTable = displayAlphaTable(alpha);
+	textBx.value="";
+	subTxt.value="";
+	plainTxt.value="";
+  document.getElementById("basicCipher").innerHTML = basicTable;
+	document.getElementById("adjustedCipher").innerHTML = basicTable;
+}
 
 function displayAlphaTable(alphaResult){
   var table = "<table cellspacing='0' cellpadding='1px' style='border:1px black solid'><tr>";
@@ -35,6 +44,7 @@ document.getElementById("adjustedCipher").innerHTML = basicTable;
 //displayCalculated();
 textBx = document.getElementById("encryptedText");
 subTxt = document.getElementById("substitution");
+plainTxt = document.getElementById("plainText");
 textBx.onblur = function() {this.value = this.value.toUpperCase();};
 subTxt.onblur = function() {
   txt = this.value;
@@ -53,6 +63,3 @@ function changeCypher(value){
   break;
  }
 }
-
-
-
