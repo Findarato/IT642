@@ -2,11 +2,7 @@
  * 
  * @author Joseph Harry
  */
-var crypt = "";
-var plainText = "";
-var alpha=["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
-var newCipher = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
-var calculated = 0;
+
 function plusOne(a){
   var poped = a.pop();
   a.unshift(poped);
@@ -17,11 +13,21 @@ function minusOne(a){
   a.push(shifted);
   return a;  
 }
-function reverse(a){
- return a.reverse();
+
+function formatOutput(output){
+  output = output.replace(/ /g,"");  
+  var newOutput = "";
+  for (var i=0;i<output.length;i++){
+    if(i%5==0 && i>0){
+      newOutput += " "+output.charAt(i);
+    }else{
+      newOutput += output.charAt(i); 
+    }
+  }
+  return newOutput;
 }
 function displayCalculated(){
-  document.getElementById("calculated").innerHTML = calculated;
+   document.getElementById("calculated").innerHTML = calculated;
 }
 function adjustCipher(adjusted,encryptedText){
   newValue="";
@@ -31,7 +37,6 @@ function adjustCipher(adjusted,encryptedText){
     if(encryptedText.charAt(i)==" "){
       newValue +=" ";
     }else{
-      
       cryptIndex = adjusted.indexOf(encryptedText.charAt(i));
       //alert(cryptIndex+"=>"+alpha[cryptIndex]);
       newValue +=alpha[cryptIndex];      
@@ -39,51 +44,29 @@ function adjustCipher(adjusted,encryptedText){
   }
   return newValue;
 }
-var basic = document.getElementById("basicCipher");
-var basicTable = "<table border='1'><tr>";
-for (var i=0;i<26;i++){ 
-  basicTable += "<td>"+alpha[i]+"</td>";
-}
-basicTable +="</tr></table><br>";
-document.getElementById("basicCipher").innerHTML = basicTable;
-document.getElementById("adjustedCipher").innerHTML = basicTable;
-displayCalculated();
 document.getElementById("reverse").onclick=function(){
-  var adjustedTable = "<table border='1'><tr>";
-  newCipher = reverse(newCipher);
-  for (var i=0;i<26;i++){ 
-    adjustedTable +="<td>"+newCipher[i]+"</td>";
-  }
-  adjustedTable +="</tr></table>";  
+  newCipher = newCipher.reverse();
+  adjustedTable = displayAlphaTable(newCipher);
   document.getElementById("adjustedCipher").innerHTML = adjustedTable;
-  var newString = adjustCipher(newCipher,document.getElementById("cypherText").value);
-  document.getElementById("plainText").value = newString;
+  var newString = adjustCipher(newCipher,document.getElementById("encryptedText").value);
+  plainTxt.value = formatOutput(newString);
 };
 document.getElementById("plusOne").onclick=function(){
-  var adjustedTable = "<table border='1'><tr>";
   newCipher = plusOne(newCipher);
-  for (var i=0;i<26;i++){ 
-    adjustedTable +="<td>"+newCipher[i]+"</td>";
-  }
-  adjustedTable +="</tr></table>";  
+  adjustedTable = displayAlphaTable(newCipher);
   document.getElementById("adjustedCipher").innerHTML = adjustedTable;
   calculated++;
   displayCalculated();
-  var newString = adjustCipher(newCipher,document.getElementById("cypherText").value);
-  document.getElementById("plainText").value = newString;
+  var newString = adjustCipher(newCipher,document.getElementById("encryptedText").value);
+  plainTxt.value = formatOutput(newString);
 };
 document.getElementById("minusOne").onclick=function(){
-  var adjustedTable = "<table border='1'><tr>";
   newCipher = minusOne(newCipher);
-  for (var i=0;i<26;i++){ 
-    adjustedTable +="<td>"+newCipher[i]+"</td>";
-  }
-  adjustedTable +="</tr></table>";  
+  adjustedTable = displayAlphaTable(newCipher);
   document.getElementById("adjustedCipher").innerHTML = adjustedTable;
   calculated--;
   displayCalculated();
-  var newString = adjustCipher(newCipher,document.getElementById("cypherText").value);
-  document.getElementById("plainText").value = newString;
+  var newString = adjustCipher(newCipher,document.getElementById("encryptedText").value);
+  plainTxt.value = formatOutput(newString);
 };
-
 //document.getElementById("plainText").value = adjustCipher(newCipher,document.getElementById("cypherText").value);

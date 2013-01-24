@@ -3,17 +3,35 @@
   <head>
     <title>Basic Cipher Breaking</title>
     <link href='http://fonts.googleapis.com/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'>
+    <style>
+    	td{
+    		border: 1px solid black;
+    	}
+
+    </style>
   </head>
 <body style="font-family: 'Droid Sans Mono', sans-serif;">
 <div id="basicCipher">basic Cipher</div>
 <div id="adjustedCipher">basic Cipher</div>
 <div id="calculated">basic Cipher</div>
-<textarea id="cypherText" cols="100" rows="5"></textarea><br>
+<select id="cypherType" onchange="changeCypher(this.value)">
+	<option value=1>Cesar</option>
+	<option value=2>Key Sub</option>
+	<option value=3>Verman</option>
+	<option value=4>Colmnar Substitution</option>
+</select>
+<input type="text" id="substitution" placeholder="substitution Text" maxlength=26 size=15>
+<input type="text" id="substitutionPosition" placeholder="position" maxlength=2 size=2>
+
 <button id="minusOne">-1</button>
 <button id="plusOne">+1</button>
-<button id="reverse">Reverse</button><br>
+<button id="reverse">Reverse</button>
+<button id="run">Run</button>
+<br>
+<textarea id="encryptedText" cols="100" rows="5" placeholder="encrypted Text"></textarea><br>
+<textarea id="plainText" cols="100" rows="5" placeholder="plain Text"></textarea><br>
+<script src="global.js"></script>
 <script src="substatution.js"></script>
-<textarea id="plainText" cols="100" rows="5"></textarea><br>
 </body>  
 </html>
 
