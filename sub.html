@@ -26,8 +26,16 @@
 <button id="plusOne">+1</button>
 <button id="reverse">Reverse</button>
 <br>
-<textarea id="encryptedText" cols="100" rows="5" placeholder="encrypted Text" style="width:100%"></textarea><br>
-<textarea id="plainText" cols="100" rows="5" placeholder="plain Text" style="width:100%"></textarea><br>
+<div style="display:table;width:100%">
+  <div style="display:table-cell;width:50%;margin:5px">
+    <textarea id="encryptedText" cols="100" rows="5" placeholder="Input Text" style="width:100%"></textarea>
+  </div>
+  <div style="display:table-cell;width:50%">
+    <textarea id="resultText" cols="100" rows="5" placeholder="Result Text" style="width:100%"></textarea>
+  </div>
+</div>
+<br>
+<br>
 <button id="run">Run</button>
 <button id="reset" onClick="reset()">Reset</button>
 <script src="global.js"></script>

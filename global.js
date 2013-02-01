@@ -59,7 +59,7 @@ document.getElementById("adjustedCipher").innerHTML = basicTable;
 //displayCalculated();
 textBx = document.getElementById("encryptedText");
 subTxt = document.getElementById("substitution");
-plainTxt = document.getElementById("plainText");
+resultTxt = document.getElementById("resultText");
 textBx.onblur = function() {this.value = this.value.toUpperCase();};
 subTxt.onblur = function() {
   txt = this.value;
@@ -67,7 +67,11 @@ subTxt.onblur = function() {
   txt = getUnique(txt);
   txt = txt.toUpperCase();
   this.value = txt;
-  //substitutionCipher(txt);
+  for(a=0;a<txt.length;a++){
+    alert(newCipher.indexOf(txt.charAt(a)));
+    txt.charAt(a);
+
+  }
 };
 
 

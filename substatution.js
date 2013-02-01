@@ -45,7 +45,7 @@ document.getElementById("reverse").onclick=function(){
   adjustedTable = displayAlphaTable(newCipher);
   document.getElementById("adjustedCipher").innerHTML = adjustedTable;
   var newString = runCipher(newCipher,document.getElementById("encryptedText").value);
-  plainTxt.value = formatOutput(newString);
+  resultTxt.value = formatOutput(newString);
 };
 
 document.getElementById("plusOne").onclick=function(){
@@ -55,7 +55,7 @@ document.getElementById("plusOne").onclick=function(){
   calculated++;
   displayCalculated();
   var newString = runCipher(newCipher,document.getElementById("encryptedText").value);
-  plainTxt.value = formatOutput(newString);
+  resultTxt.value = formatOutput(newString);
 };
 document.getElementById("minusOne").onclick=function(){
   newCipher = minusOne(newCipher);
@@ -64,6 +64,6 @@ document.getElementById("minusOne").onclick=function(){
   calculated--;
   displayCalculated();
   var newString = runCipher(newCipher,document.getElementById("encryptedText").value);
-  plainTxt.value = formatOutput(newString);
+  resultTxt.value = formatOutput(newString);
 };
 //document.getElementById("plainText").value = adjustCipher(newCipher,document.getElementById("cypherText").value);
