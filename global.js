@@ -1,11 +1,21 @@
 //Lets define some variables
 var crypt = "";
 var plainText = "";
-var alpha=["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
-var newCipher = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
+function newAlpha(){
+  return ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
+}
+var alpha = newAlpha();
+var newCipher = newAlpha();
 var calculated = 0;
 var basic = document.getElementById("basicCipher");
 var basicTable;
+var textBx = document.getElementById("inputText");
+var subTxt = document.getElementById("substitution");
+var resultTxt = document.getElementById("resultText");
+var ciperType = document.getElementById("cipherType");
+var encryptRdo = document.getElementsByName("encrypt");
+
+
 
 basicTable = displayAlphaTable(alpha);
 
@@ -17,7 +27,13 @@ function reset(){
   document.getElementById("basicCipher").innerHTML = basicTable;
 	document.getElementById("adjustedCipher").innerHTML = basicTable;
 }
-
+function radioValue(radios){
+  for (var i = 0, length = radios.length; i < length; i++) {
+    if (radios[i].checked) {
+        return radios[i].value;
+    }
+  }
+}
 function SelectAll(id){
   document.getElementById(id).focus();
   document.getElementById(id).select();
@@ -25,11 +41,11 @@ function SelectAll(id){
 function getUnique(str){
   var newString = "";
   var len = str.length;
+  str.toUpperCase();
   var c = str[0];
-  
   for ( var i = 0; i < len; ++i ) {
     c = str[i];
-    if (newString.indexOf(c.toUpperCase())==-1) {
+    if (newString.indexOf(c)==-1) {
       newString += c;
     }
   }
@@ -60,11 +76,6 @@ function formatOutput(output){
 document.getElementById("basicCipher").innerHTML = basicTable;
 document.getElementById("adjustedCipher").innerHTML = basicTable;
 //create some global variables
-textBx = document.getElementById("inputText");
-subTxt = document.getElementById("substitution");
-resultTxt = document.getElementById("resultText");
-ciperType = document.getElementById("cipherType");
-
 textBx.onblur = function() {this.value = this.value.toUpperCase();};
 
 plainTxt = document.getElementById("plainText");
