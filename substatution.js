@@ -14,56 +14,64 @@ function minusOne(a){
   return a;  
 }
 
+function displayNewCipherTable(newCipher){
+  adjustedTable = displayAlphaTable(newCipher);
+  document.getElementById("adjustedCipher").innerHTML = adjustedTable;
+}
+
 
 function displayCalculated(){
    document.getElementById("calculated").innerHTML = calculated;
 }
 
-function substitutionCipher(subText){
-  subText = getUnique(subtext);
-  newValue = alpha.toString();
-  newValue = subText.split();
-  alert(newValue);
-}
-
-function runCipher(adjustedAlpha,encryptedText){
+function runCipher(adjustedAlpha,inputText){
   newValue="";
-  encryptedText = encryptedText.replace(/[^A-Za-z]/g, ' ');// lets clean up the text so it is just letters
-  for (var i=0;i<encryptedText.length;i++){
-    if(encryptedText.charAt(i)==" "){
+  inputText = inputText.replace(/[^A-Za-z]/g, ' ');// lets clean up the text so it is just letters
+  for (var i=0;i<inputText.length;i++){
+    if(inputText.charAt(i)==" "){
       newValue +=" ";
     }else{
-      cryptIndex = adjustedAlpha.indexOf(encryptedText.charAt(i));
+      cryptIndex = adjustedAlpha.indexOf(inputText.charAt(i));
       newValue +=alpha[cryptIndex];      
     }
   }
   return newValue;
 }
 
-document.getElementById("reverse").onclick=function(){
-  newCipher = newCipher.reverse();
-  adjustedTable = displayAlphaTable(newCipher);
-  document.getElementById("adjustedCipher").innerHTML = adjustedTable;
-  var newString = runCipher(newCipher,document.getElementById("encryptedText").value);
-  resultTxt.value = formatOutput(newString);
+
+subTxt.onblur = function() {
+  if(ciperType.value=="2"){ // lets make sure we are only running this when we need to
+    txt = this.value;
+    txt = txt.replace(/ /g,"");
+    txt = getUnique(txt);
+    txt = txt.toUpperCase();
+    this.value = txt;
+    var letter = "";
+    
+  }
+  displayNewCipherTable(newCipher);
 };
 
+
+document.getElementById("reverse").onclick=function(){
+  newCipher = newCipher.reverse();
+  displayNewCipherTable(newCipher);
+  var newString = runCipher(newCipher,document.getElementById("inputText").value);
+  resultTxt.value = formatOutput(newString);
+};
 document.getElementById("plusOne").onclick=function(){
   newCipher = plusOne(newCipher);
-  adjustedTable = displayAlphaTable(newCipher);
-  document.getElementById("adjustedCipher").innerHTML = adjustedTable;
+  displayNewCipherTable(newCipher);
   calculated++;
   displayCalculated();
-  var newString = runCipher(newCipher,document.getElementById("encryptedText").value);
+  var newString = runCipher(newCipher,document.getElementById("inputText").value);
   resultTxt.value = formatOutput(newString);
 };
 document.getElementById("minusOne").onclick=function(){
   newCipher = minusOne(newCipher);
-  adjustedTable = displayAlphaTable(newCipher);
-  document.getElementById("adjustedCipher").innerHTML = adjustedTable;
+  displayNewCipherTable(newCipher);
   calculated--;
   displayCalculated();
-  var newString = runCipher(newCipher,document.getElementById("encryptedText").value);
+  var newString = runCipher(newCipher,document.getElementById("inputText").value);
   resultTxt.value = formatOutput(newString);
 };
-//document.getElementById("plainText").value = adjustCipher(newCipher,document.getElementById("cypherText").value);

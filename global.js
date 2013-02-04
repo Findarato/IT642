@@ -18,20 +18,23 @@ function reset(){
 	document.getElementById("adjustedCipher").innerHTML = basicTable;
 }
 
+function SelectAll(id){
+  document.getElementById(id).focus();
+  document.getElementById(id).select();
+}
 function getUnique(str){
   var newString = "";
   var len = str.length;
   var c = str[0];
-  for ( var i = 1; i < len; ++i ) {
-      if (newString.indexOf(c)==-1) {
+  
+  for ( var i = 0; i < len; ++i ) {
+    c = str[i];
+    if (newString.indexOf(c.toUpperCase())==-1) {
       newString += c;
     }
-    c = str[i];
   }
   return newString;
 }
-
-
 
 function displayAlphaTable(alphaResult){
   var table = "<table cellspacing='0' cellpadding='1px' style='border:1px black solid'><tr>";
@@ -56,31 +59,25 @@ function formatOutput(output){
 }
 document.getElementById("basicCipher").innerHTML = basicTable;
 document.getElementById("adjustedCipher").innerHTML = basicTable;
-//displayCalculated();
-textBx = document.getElementById("encryptedText");
+//create some global variables
+textBx = document.getElementById("inputText");
 subTxt = document.getElementById("substitution");
 resultTxt = document.getElementById("resultText");
+ciperType = document.getElementById("cipherType");
+
 textBx.onblur = function() {this.value = this.value.toUpperCase();};
-subTxt.onblur = function() {
-  txt = this.value;
-  txt = txt.replace(/ /g,"");
-  txt = getUnique(txt);
-  txt = txt.toUpperCase();
-  this.value = txt;
-  for(a=0;a<txt.length;a++){
-    alert(newCipher.indexOf(txt.charAt(a)));
-    txt.charAt(a);
-
-  }
-};
-
 
 plainTxt = document.getElementById("plainText");
-function changeCypher(value){
- switch(value){
-  case 1:
-  break;
-  case 2:
-  break;
- }
+function changeCipher(value){
+  switch(value){
+    case "1":
+      subTxt.style.cssText="display:none";
+    break;
+    case "2":
+      subTxt.style.cssText="display:inline-block";
+    break;
+    default:
+      subTxt.style.cssText="display:none";
+    break;
+  }
 }
