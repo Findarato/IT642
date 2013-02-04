@@ -34,7 +34,12 @@ function drawGraph(data){
   line.Set('chart.numxticks', 5);
   line.Draw();
 }
-
+function swap(){
+  var holder = $("#inputText").val();
+  $("#inputText").val($("#resultText").val());
+  $("#resultText").val(holder);
+  
+}
 
 function reset(){
 	basicTable = displayAlphaTable(alpha);
@@ -98,11 +103,28 @@ inputText.onblur = function() {this.value = this.value.toUpperCase();};
 plainTxt = document.getElementById("plainText");
 function changeCipher(value){
   switch(value){
-    case "1":
-      subTxt.style.cssText="display:none";
+    case "1"://cesar
+      $("#substitution").css({"display":"none"});
+      $("#reverse").css({"display":"inline-block"});
+      $("#plusOne").css({"display":"inline-block"});
+      $("#minusOne").css({"display":"inline-block"});
     break;
-    case "2":
-      subTxt.style.cssText="display:inline-block";
+    case "2"://key sub
+      $("#substitution").css({"display":"inline-block"});
+      $("#reverse").css({"display":"inline-block"});
+      $("#plusOne").css({"display":"inline-block"});
+      $("#minusOne").css({"display":"inline-block"});
+    break;
+    case "3"://vernam
+      $("#substitution").css({"display":"none"});
+      $("#reverse").css({"display":"none"});
+      $("#plusOne").css({"display":"none"});
+      $("#minusOne").css({"display":"none"});
+    break;
+    case "4": //columnar sub
+      $("#reverse").css({"display":"none"});
+      $("#plusOne").css({"display":"none"});
+      $("#minusOne").css({"display":"none"});
     break;
     default:
       subTxt.style.cssText="display:none";
