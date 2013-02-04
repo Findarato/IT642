@@ -92,3 +92,17 @@ function changeCipher(value){
     break;
   }
 }
+function exec(){
+  
+  switch(ciperType.value){
+    case "1": // Ceasar
+    case "2": // key sub
+      var newString = runCipher(newCipher,document.getElementById("inputText").value);
+      resultTxt.value = formatOutput(newString);
+    break;
+    default:
+      subTxt.style.cssText="display:none";
+    break;
+  }
+
+}

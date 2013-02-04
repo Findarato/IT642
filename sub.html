@@ -12,7 +12,7 @@
 <body style="font-family: 'Droid Sans Mono', sans-serif;">
 <div id="basicCipher">basic Cipher</div>
 <div id="adjustedCipher">basic Cipher</div>
-<div id="calculated">basic Cipher</div>
+<div id="calculated"></div>
 <select id="cipherType" onchange="changeCipher(this.value)">
 	<option value=1>Cesar</option>
 	<option value=2>Key Sub</option>
@@ -40,8 +40,8 @@ No<input type="radio" name="encrypt" value="0" >
 </div>
 <br>
 <br>
-<button id="run">Run</button>
-<button id="reset" onClick="reset()">Reset</button>
+<button id="run" onclick="exec()">Run</button>
+<button id="reset" onclick="reset()">Reset</button>
 <script src="global.js"></script>
 <script src="substatution.js"></script>
 </body>  

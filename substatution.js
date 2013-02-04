@@ -42,7 +42,6 @@ function runCipher(adjustedAlpha,inputText){
   return newValue;
 }
 
-
 subTxt.onblur = function() {
   var shiftCipher = newAlpha();
   if(ciperType.value=="2"){ // lets make sure we are only running this when we need to
