@@ -24,6 +24,7 @@ function displayCalculated(){
    document.getElementById("calculated").innerHTML = calculated;
 }
 function runCipher(adjustedAlpha,inputText){
+  var start = new Date().getTime();
   newValue="";
   tempAlpha = alpha;
   if(radioValue(encryptRdo) == 0){
@@ -39,6 +40,25 @@ function runCipher(adjustedAlpha,inputText){
       newValue +=tempAlpha[cryptIndex];      
     }
   }
+  for(var d=0;d<100000;d++){
+    
+  }
+  var endTime = new Date().getTime();
+  var duration = endTime-start;
+  switch(ciperType.value){
+    case "1": // Ceasar
+      cesarData.push(duration);
+      drawGraph(cesarData);
+    break;
+    case "2": // key sub
+      keySubData.push(duration);
+      drawGraph(keySubData);
+    break;
+    default:
+    break;
+  }
+  
+  
   return newValue;
 }
 

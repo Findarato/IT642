@@ -14,10 +14,27 @@ var subTxt = document.getElementById("substitution");
 var resultTxt = document.getElementById("resultText");
 var ciperType = document.getElementById("cipherType");
 var encryptRdo = document.getElementsByName("encrypt");
-
+var cesarData = [];
+var keySubData = [];
+var colmnarData = [];
+var vermanData = []
 
 
 basicTable = displayAlphaTable(alpha);
+
+function drawGraph(data){
+  RGraph.Clear(document.getElementById("cvs"));
+  RGraph.ObjectRegistry.Clear();
+
+  var line = new RGraph.Line('cvs', data);
+  line.Set('chart.colors', ['green']);
+  line.Set('chart.linewidth', 1);
+  line.Set('chart.filled', true);
+  line.Set('chart.fillstyle', 'rgba(128,255,128,0.5)');
+  line.Set('chart.numxticks', 5);
+  line.Draw();
+}
+
 
 function reset(){
 	basicTable = displayAlphaTable(alpha);
