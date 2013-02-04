@@ -9,7 +9,7 @@ var newCipher = newAlpha();
 var calculated = 0;
 var basic = document.getElementById("basicCipher");
 var basicTable;
-var textBx = document.getElementById("inputText");
+var inputText = document.getElementById("inputText");
 var subTxt = document.getElementById("substitution");
 var resultTxt = document.getElementById("resultText");
 var ciperType = document.getElementById("cipherType");
@@ -38,7 +38,7 @@ function drawGraph(data){
 
 function reset(){
 	basicTable = displayAlphaTable(alpha);
-	textBx.value="";
+	inputText.value="";
 	subTxt.value="";
 	plainTxt.value="";
   document.getElementById("basicCipher").innerHTML = basicTable;
@@ -93,7 +93,7 @@ function formatOutput(output){
 document.getElementById("basicCipher").innerHTML = basicTable;
 document.getElementById("adjustedCipher").innerHTML = basicTable;
 //create some global variables
-textBx.onblur = function() {this.value = this.value.toUpperCase();};
+inputText.onblur = function() {this.value = this.value.toUpperCase();};
 
 plainTxt = document.getElementById("plainText");
 function changeCipher(value){
@@ -116,6 +116,17 @@ function exec(){
     case "2": // key sub
       var newString = runCipher(newCipher,document.getElementById("inputText").value);
       resultTxt.value = formatOutput(newString);
+    break;
+    case "3":
+    break;
+    case "4":
+
+      if(radioValue(encryptRdo) == 0){
+        colmnEncrypt();
+      }else{
+        colmnDecrypt();
+      }
+      
     break;
     default:
       subTxt.style.cssText="display:none";

@@ -40,9 +40,6 @@ function runCipher(adjustedAlpha,inputText){
       newValue +=tempAlpha[cryptIndex];      
     }
   }
-  for(var d=0;d<100000;d++){
-    
-  }
   var endTime = new Date().getTime();
   var duration = endTime-start;
   switch(ciperType.value){
@@ -94,7 +91,7 @@ subTxt.onblur = function() {
 document.getElementById("reverse").onclick=function(){
   newCipher = newCipher.reverse();
   displayNewCipherTable(newCipher);
-  var newString = runCipher(newCipher,document.getElementById("inputText").value);
+  var newString = runCipher(newCipher,inputText.value);
   resultTxt.value = formatOutput(newString);
 };
 document.getElementById("plusOne").onclick=function(){
@@ -102,7 +99,7 @@ document.getElementById("plusOne").onclick=function(){
   displayNewCipherTable(newCipher);
   calculated++;
   displayCalculated();
-  var newString = runCipher(newCipher,document.getElementById("inputText").value);
+  var newString = runCipher(newCipher,inputText.value);
   resultTxt.value = formatOutput(newString);
 };
 document.getElementById("minusOne").onclick=function(){
@@ -110,6 +107,6 @@ document.getElementById("minusOne").onclick=function(){
   displayNewCipherTable(newCipher);
   calculated--;
   displayCalculated();
-  var newString = runCipher(newCipher,document.getElementById("inputText").value);
+  var newString = runCipher(newCipher,inputText.value);
   resultTxt.value = formatOutput(newString);
 };
