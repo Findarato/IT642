@@ -17,7 +17,6 @@ function colmnEncrypt() {
   colmnarData.push(duration);
   drawGraph(colmnarData);
 }
-
 function colmnDecrypt(f) {
   var ciphertext = inputText.value.replace(/ /g,"");
   var key = 5; 

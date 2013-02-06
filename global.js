@@ -147,15 +147,11 @@ function exec(){
         $("#vernamCode").css("display","inline-block")
         vernameEncrypt(inputText.value,$("#vernamCode").val());
       }else{
-        colmnDecrypt();
+        vernameDecrypt(inputText.value,$("#vernamCode").val());
       }    
     break;
     case "4":
-      if(radioValue(encryptRdo) == 0){
-        colmnEncrypt();
-      }else{
-        colmnDecrypt();
-      }
+      colmnEncrypt();     
     break;
     default:
       subTxt.style.cssText="display:none";

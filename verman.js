@@ -1,5 +1,4 @@
 function vernameEncrypt(plainText,random){
-  var base = newAlpha();
   var cipherValue = "";
   if(!Array.isArray(random)){
     if(random.indexOf(" ")==-1){
@@ -11,18 +10,16 @@ function vernameEncrypt(plainText,random){
   if(random===undefined || random.length <= 0 || random.length<plainText.length){
     var random = new Array();
     for(a=0;a<plainText.length;a++){
-      random[a] = Math.floor(Math.random()*100+1);
+      random[a] = Math.floor((Math.random()*50));
     }
     $("#vernamCode").val(random)
   }
   plainText = plainText.replace(/ /g,"").split("");
-  
   for(a=0;a<plainText.length;a++){
-    ptValue = base.indexOf(plainText[a]);
+    ptValue = String.charCodeAt(plainText[a]);//turns letters into numbers
     randValue = random[a];
-    encValue = (ptValue+randValue)%26;
-    cipherValue += base[encValue];
+    encValue = (ptValue^randValue);
+    cipherValue += String.fromCharCode(encValue);
   }
   resultTxt.value = formatOutput(cipherValue);  
-  
 }
