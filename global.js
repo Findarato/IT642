@@ -38,7 +38,6 @@ function swap(){
   var holder = $("#inputText").val();
   $("#inputText").val($("#resultText").val());
   $("#resultText").val(holder);
-  
 }
 
 function reset(){
@@ -73,7 +72,6 @@ function getUnique(str){
   }
   return newString;
 }
-
 function displayAlphaTable(alphaResult){
   var table = "<table cellspacing='0' cellpadding='1px' style='border:1px black solid'><tr>";
     for (var i=0;i<26;i++){ 
@@ -82,7 +80,6 @@ function displayAlphaTable(alphaResult){
     table +="</tr></table><br>";
     return table;
 }
-
 function formatOutput(output){
   output = output.replace(/ /g,"");  
   var newOutput = "";
@@ -98,9 +95,12 @@ function formatOutput(output){
 document.getElementById("basicCipher").innerHTML = basicTable;
 document.getElementById("adjustedCipher").innerHTML = basicTable;
 //create some global variables
-inputText.onblur = function() {this.value = this.value.toUpperCase();};
-
-plainTxt = document.getElementById("plainText");
+inputText.onblur = function() {
+  this.value = this.value.toUpperCase();
+  if($("#cipherTyle").val()==3){
+    $("#vernamCode").text("cool vernam")
+  }
+};
 function changeCipher(value){
   switch(value){
     case "1"://cesar
@@ -108,20 +108,24 @@ function changeCipher(value){
       $("#reverse").css({"display":"inline-block"});
       $("#plusOne").css({"display":"inline-block"});
       $("#minusOne").css({"display":"inline-block"});
+      $("#vernamCode").css({"display":"none"});
     break;
     case "2"://key sub
       $("#substitution").css({"display":"inline-block"});
       $("#reverse").css({"display":"inline-block"});
       $("#plusOne").css({"display":"inline-block"});
       $("#minusOne").css({"display":"inline-block"});
+      $("#vernamCode").css({"display":"none"});
     break;
     case "3"://vernam
       $("#substitution").css({"display":"none"});
       $("#reverse").css({"display":"none"});
       $("#plusOne").css({"display":"none"});
       $("#minusOne").css({"display":"none"});
+      $("#vernamCode").css({"display":"inline-block"});
     break;
     case "4": //columnar sub
+      $("#vernamCode").css({"display":"none"});
       $("#reverse").css({"display":"none"});
       $("#plusOne").css({"display":"none"});
       $("#minusOne").css({"display":"none"});
@@ -132,7 +136,6 @@ function changeCipher(value){
   }
 }
 function exec(){
-  
   switch(ciperType.value){
     case "1": // Ceasar
     case "2": // key sub
@@ -140,15 +143,19 @@ function exec(){
       resultTxt.value = formatOutput(newString);
     break;
     case "3":
+      if(radioValue(encryptRdo) == 0){
+        $("#vernamCode").css("display","inline-block")
+        vernameEncrypt(inputText.value,$("#vernamCode").val());
+      }else{
+        colmnDecrypt();
+      }    
     break;
     case "4":
-
       if(radioValue(encryptRdo) == 0){
         colmnEncrypt();
       }else{
         colmnDecrypt();
       }
-      
     break;
     default:
       subTxt.style.cssText="display:none";
